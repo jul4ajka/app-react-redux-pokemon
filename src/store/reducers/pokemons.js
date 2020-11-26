@@ -46,6 +46,7 @@ export default function pokemonsReducer(state = initialState, action) {
       return {
         ...state,
         pokemonsArr: state.pokemonsCopy.concat(action.pokemonsArr),
+        pokemonsCopy: state.pokemonsCopy.concat(action.pokemonsArr),
         nextArr: action.nextArr,
       }
     case LOAD_MORE_ERROR:
