@@ -1,0 +1,28 @@
+.Navigation {
+  background-color: black;
+}
+
+.Navigation ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-inline-start: 0;
+}
+
+.Navigation ul li {
+  list-style-type: none;
+  padding: 1vw 4vw;
+}
+
+.Navigation ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 3vw;
+}
+
+.Navigation ul li a:hover {
+  color: blanchedalmond;
+}
+.Navigation .active {
+  color: blanchedalmond;
+}
