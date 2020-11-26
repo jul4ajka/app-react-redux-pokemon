@@ -2,11 +2,9 @@ import {
   FETCH_POKEMONS_ERROR,
   FETCH_POKEMONS_START,
   FETCH_POKEMONS_SUCCESS,
-  LOAD_MORE_POKEMONS,
-  LOAD_MORE_ERROR,
 } from '../actions/actionTypes'
-
 import { FILTER_ITEM_SUCCESS, FILTER_ITEM_ERROR } from '../actions/actionTypes'
+import { LOAD_MORE_POKEMONS, LOAD_MORE_ERROR } from '../actions/actionTypes'
 
 const initialState = {
   pokemonsArr: [],
