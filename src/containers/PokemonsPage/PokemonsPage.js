@@ -9,6 +9,7 @@ import fetchPokemons from '../../store/actions/pokemons'
 import showItem from '../../store/actions/showItem'
 import getAllTypes from '../../store/actions/getAllTypes'
 import filterItems from '../../store/actions/filterItems'
+import loadMorePokemons from '../../store/actions/loadMore'
 
 class PokemonsPage extends Component {
   componentDidMount() {
@@ -17,11 +18,11 @@ class PokemonsPage extends Component {
   }
 
   render() {
-    const { fetchPokemons, showItem } = this.props
+    const { loadMore, showItem, filterItems } = this.props
     return (
       <div className='PokemonsPage'>
         <select
-          onChange={event => this.props.filterItems(event)}
+          onChange={event => filterItems(event)}
           className={'SelectPokemonsType'}
         >
           <option>Select all</option>
@@ -54,7 +55,7 @@ class PokemonsPage extends Component {
             <button
               className='Load_more'
               onClick={() => {
-                fetchPokemons(this.props.nextArr)
+                loadMore(this.props.nextArr)
               }}
             >
               Load more
@@ -103,6 +104,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchPokemons: url => dispatch(fetchPokemons(url)),
+    loadMore: url => dispatch(loadMorePokemons(url)),
     showItem: url => dispatch(showItem(url)),
     getAllTypes: () => dispatch(getAllTypes()),
     filterItems: event => dispatch(filterItems(event)),

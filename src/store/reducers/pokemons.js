@@ -2,6 +2,8 @@ import {
   FETCH_POKEMONS_ERROR,
   FETCH_POKEMONS_START,
   FETCH_POKEMONS_SUCCESS,
+  LOAD_MORE_POKEMONS,
+  LOAD_MORE_ERROR,
 } from '../actions/actionTypes'
 
 import { FILTER_ITEM_SUCCESS, FILTER_ITEM_ERROR } from '../actions/actionTypes'
@@ -28,9 +30,8 @@ export default function pokemonsReducer(state = initialState, action) {
         ...state,
         nextArr: action.nextArr,
         loading: false,
-        pokemonsArr:
-          action.pokemonsArr || state.pokemonsCopy.concat(action.pokemonsArr),
-        pokemonsCopy: state.pokemonsCopy.concat(action.pokemonsArr),
+        pokemonsArr: action.pokemonsArr,
+        pokemonsCopy: action.pokemonsArr,
       }
     case FETCH_POKEMONS_ERROR:
       return { ...state, loading: false, error: action.e }
@@ -41,6 +42,17 @@ export default function pokemonsReducer(state = initialState, action) {
       }
     case FILTER_ITEM_ERROR:
       return { ...state, error: action.e }
+    case LOAD_MORE_POKEMONS:
+      return {
+        ...state,
+        pokemonsArr: state.pokemonsCopy.concat(action.pokemonsArr),
+        nextArr: action.nextArr,
+      }
+    case LOAD_MORE_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      }
     default:
       return state
   }
