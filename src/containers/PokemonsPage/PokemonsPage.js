@@ -19,6 +19,7 @@ class PokemonsPage extends Component {
 
   render() {
     const { loadMore, showItem, filterItems } = this.props
+    console.log(this.props)
     return (
       <div className='PokemonsPage'>
         <select
